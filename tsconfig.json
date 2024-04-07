@@ -35,10 +35,12 @@
       "allowUnusedLabels": true,
       "allowUnreachableCode": true,
       "skipDefaultLibCheck": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "declaration": true,
+      "declarationDir": "./types"
   },
   "include": ["src/**/*", "tests/**/*"],
-  "exclude": ["node_modules", "dist", "**/dist"],
+  "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],
   "ts-node": {
       "esm": true
   }

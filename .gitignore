@@ -7,3 +7,5 @@ download/
 .Data_Store
 .env
 .eslintcache
+
+tmp
