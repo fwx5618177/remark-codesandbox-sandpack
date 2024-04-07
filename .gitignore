@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vscode/
+logs/
+download/
+
+.Data_Store
+.env
+.eslintcache
