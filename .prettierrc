@@ -20,5 +20,23 @@
     "singleQuote": true,
     "jsxSingleQuote": true,
     "trailingComma": "all",
-    "embeddedLanguageFormatting": "auto"
+    "embeddedLanguageFormatting": "auto",
+    "import/order": [
+        "error",
+        {
+            "groups": [
+                "builtin",
+                "external",
+                "internal",
+                "parent",
+                "sibling",
+                "index"
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+                "order": "asc",
+                "caseInsensitive": true
+            }
+        }
+    ]
 }

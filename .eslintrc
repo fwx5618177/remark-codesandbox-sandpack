@@ -1,9 +1,9 @@
 {
     "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-    "plugins": ["prettier"],
+    "plugins": ["prettier", "import"],
     "parserOptions": {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
     },
     "rules": {
         "@typescript-eslint/explicit-member-accessibility": 0,
@@ -19,6 +19,41 @@
         "prettier/prettier": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
-        "@typescript-eslint/no-duplicate-enum-values": "warn"
-    }
+        "@typescript-eslint/no-duplicate-enum-values": "warn",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+                "newlines-between": "always",
+            },
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "varsIgnorePattern": "^_",
+                "argsIgnorePattern": "^_",
+                "ignoreRestSiblings": true,
+            },
+        ],
+    },
+    "ignorePatterns": ["node_modules/", "dist/", "build/", "**/*.spec.ts"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.js"],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "project": ["./tsconfig.json"],
+            },
+        },
+    ],
+    "root": true,
+    "env": {
+        "node": true,
+        "es6": true,
+    },
 }
