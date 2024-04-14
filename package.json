@@ -1,6 +1,6 @@
 {
   "name": "remark-codesandbox-browser",
-  "version": "1.0.0",
+  "version": "1.0.1-beta.0",
   "description": "Create CodeSandbox directly from code blocks",
   "main": "src/index.ts",
   "author": "",
