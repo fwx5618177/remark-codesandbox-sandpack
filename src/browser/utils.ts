@@ -1,5 +1,6 @@
+import { CodeNode, CodesandboxType, Options, ParsedProps } from '../ICodeSandBox';
+
 import { CodeNodeProcessorFactory } from './CodeNodeProcessor/CodeNodeProcessorFactory';
-import { CodeNode, CodesandboxType, Options, ParseMetaLanguage, ParsedProps } from './IBrowser';
 
 export class Utils {
     /**
@@ -12,17 +13,16 @@ export class Utils {
      * @returns {ParsedProps | undefined} 返回匹配到的类型，如果没有匹配到返回undefined
      */
     static parseCodeBlock = (meta: string): ParsedProps | undefined => {
-        console.log({ meta });
         if (!meta) return;
 
-        const pattern = /(react|vue|angular)\s+codesandbox=([^?\s]+)(\?.*)?$/;
+        const pattern = /codesandbox=([^?\s]+)(\?.*)?$/;
         const match = meta.match(pattern);
 
         if (!match) return;
 
-        const language = match[1] as ParseMetaLanguage;
-        const codesandboxMetaType = match[2];
-        const codesandboxMeta = match[3] ? match[3].substring(1) : '';
+        // const language = match[1] as ParseMetaLanguage;
+        const codesandboxMetaType = match[1];
+        const codesandboxMeta = match[2] ? match[2].substring(1) : '';
         const codesandbox: Partial<ParsedProps['codesandbox']> = {};
 
         if (codesandboxMetaType) {
@@ -37,7 +37,6 @@ export class Utils {
         });
 
         const props = {
-            language,
             codesandbox: codesandbox as Required<ParsedProps['codesandbox']>,
         } as const satisfies ParsedProps;
 

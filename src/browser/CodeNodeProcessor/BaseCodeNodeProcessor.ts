@@ -1,4 +1,4 @@
-import { CodeNode, ICodeNodeProcessor, Options, ParsedProps } from '../IBrowser';
+import { CodeNode, ICodeNodeProcessor, Options, ParsedProps } from '../../ICodeSandBox';
 
 export class BaseCodeNodeProcessor implements ICodeNodeProcessor {
     node: CodeNode;

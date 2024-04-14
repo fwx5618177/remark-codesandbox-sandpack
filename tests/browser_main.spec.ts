@@ -1,4 +1,6 @@
+import { JSDOM } from 'jsdom';
 import { expect } from 'chai';
+import { describe, it, before } from 'mocha';
 import { remark } from 'remark';
 import { unified } from 'unified';
 import markdown from 'remark-parse';
@@ -10,41 +12,47 @@ import { fileURLToPath } from 'url';
 import { visit } from 'unist-util-visit';
 
 import remarkSandpack from '../src/browser';
+import { CodeNode } from '../src/ICodeSandBox';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 describe('remarkSandpack', () => {
     describe('Options', () => {
-        it('should process code blocks with remark', () => {
+        it('should process code blocks with remark', async () => {
             const input = '```js code block content\n121313\n131231\n```';
-            const processor = remark().use(remarkSandpack, { mode: 'button' });
-            const result = processor.processSync(input).toString();
-
-            expect(result).to.include('code block content');
+            const processor = remark().use(remarkSandpack, { mode: 'button' }).parse(input);
+            const result = processor.children[0] as CodeNode;
+            expect(result.meta).to.include('code block content');
+            expect(result.value).to.include('121313\n131231');
+            expect(result.lang).to.be.equal('js');
         });
 
         it('should process code blocks with remark', () => {
             const input = '```js code block content\n121313\n131231\n```';
-            const processor = remark().use(remarkSandpack, { mode: 'iframe' });
-            const result = processor.processSync(input).toString();
-
-            expect(result).to.include('code block content');
+            const processor = remark().use(remarkSandpack, { mode: 'iframe' }).parse(input);
+            const result = processor.children[0] as CodeNode;
+            expect(result.meta).to.include('code block content');
+            expect(result.value).to.include('121313\n131231');
+            expect(result.lang).to.be.equal('js');
         });
 
         it('should process code blocks with remark', () => {
             const input = '```js code block content\n121313\n131231\n```';
-            const processor = remark().use(remarkSandpack, { mode: 'metadata' });
-            const result = processor.processSync(input).toString();
-
-            expect(result).to.include('code block content');
+            const processor = remark().use(remarkSandpack, { mode: 'metadata' }).parse(input);
+            const result = processor.children[0] as CodeNode;
+            expect(result.meta).to.include('code block content');
+            expect(result.value).to.include('121313\n131231');
+            expect(result.lang).to.be.equal('js');
         });
     });
 
     describe('remarkSandpack Plugin', () => {
-        let markdownContent;
+        let markdownContent: string | undefined;
 
         before(() => {
-            // 读取Markdown文件内容
+            // const { window } = new JSDOM('');
+            // global.window = window;
+
             try {
                 markdownContent = readFileSync(join(__dirname, '__mock__', 'test.md'), 'utf-8');
             } catch (error) {
@@ -52,54 +60,48 @@ describe('remarkSandpack', () => {
             }
         });
 
-        it('should process code blocks with remark', () => {
-            const processor = remark().use(remarkSandpack, { mode: 'button', runtime: 'browser' });
-            const result = processor.processSync(markdownContent).toString();
+        it('should correctly transform nodes based on remarkSandpack', async () => {
+            const ast = remark().parse(markdownContent);
 
-            expect(result).not.be.false;
+            remark()
+                .use(remarkSandpack, { mode: 'iframe', runtime: 'browser', type: 'sandpack' })
+                .run(ast, (err, processedAst) => {
+                    if (err) throw err;
+
+                    visit(processedAst as Node, 'code', (node: CodeNode) => {
+                        console.log(node);
+                        if (node.data && node.data.hProperties) {
+                            const { 'data-sandpack': dataSandpack, 'data-mode': dataMode } =
+                                node.data.hProperties;
+
+                            expect(dataMode).to.equal('iframe');
+                            expect(dataSandpack).to.be.a('string');
+                            expect(JSON.parse(dataSandpack as string)).to.be.an('object');
+                        }
+                    });
+                });
         });
 
         it('should correctly transform nodes based on remarkSandpack', async () => {
-            const processedAst = remark()
+            const ast = remark().parse(markdownContent);
+
+            remark()
                 .use(remarkSandpack, { mode: 'iframe', runtime: 'browser', type: 'sandpack' })
-                .parse(markdownContent);
+                .run(ast, (err, processedAst) => {
+                    if (err) throw err;
 
-            visit(processedAst, 'code', node => {
-                // console.log(node);
-                if (node.data && node.data.hProperties) {
-                    const { 'data-sandpack': dataSandpack, 'data-mode': dataMode } =
-                        node.data.hProperties;
+                    visit(processedAst as Node, 'code', (node: CodeNode) => {
+                        console.log(node);
+                        if (node.data && node.data.hProperties) {
+                            const { 'data-sandpack': dataSandpack, 'data-mode': dataMode } =
+                                node.data.hProperties;
 
-                    // console.log(dataSandpack, dataMode);
-                    expect(dataMode).to.equal('iframesssssss');
-                    expect(dataSandpack).to.be.a('string');
-                    // console.log(dataSandpack);
-                    expect(JSON.parse(dataSandpack as string)).to.be.an('object');
-                }
-            });
+                            expect(dataMode).to.equal('iframe');
+                            expect(dataSandpack).to.be.a('string');
+                            expect(JSON.parse(dataSandpack as string)).to.be.an('object');
+                        }
+                    });
+                });
         });
     });
-
-    // it('should process code blocks with unified', () => {
-    //     const input = '```js\ncode block content\n```';
-    //     const processor = unified().use(parser).use(remarkSandpack, { mode: 'iframe' });
-    //     const result = processor.processSync(input).toString();
-
-    //     // 此处根据remarkSandpack的实际效果进行断言
-    //     expect(result).to.include('code block content');
-    // });
-
-    // it('should process code blocks with react-markdown', () => {
-    //     const input = '```js\ncode block content\n```';
-    //     // 注意：react-markdown的使用略有不同，因为它直接在React组件中渲染Markdown
-    //     // 可能需要根据实际实现调整此测试用例
-    //     const result = reactMarkdown({
-    //         children: input,
-    //         remarkPlugins: [[remarkSandpack, { mode: 'metadata' }]],
-    //     });
-
-    //     // 由于react-markdown在客户端渲染，这里的测试需要根据实际输出结构进行断言
-    //     // 此处假设您能够某种方式检查渲染结果
-    //     expect(result).to.include('code block content');
-    // });
 });

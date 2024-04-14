@@ -44,7 +44,7 @@ const a = 1;
 const a = 1;
 ```
 
-```react codesandbox=new?style=height:1000px;width:600px
+```react codesandbox=new?style=height:1000px;width:600px&template=react&theme=night
 const a = 1;
 const a = 1;
 const a = 1;
