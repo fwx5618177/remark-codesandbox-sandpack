@@ -1,18 +1,17 @@
 {
-  "name": "remark-codesandbox-browser",
+  "name": "remark-codesandbox-newest",
   "version": "1.0.1-beta.0",
   "description": "Create CodeSandbox directly from code blocks",
-  "main": "src/index.ts",
+  "main": "src/browser/index.ts",
   "author": "",
   "license": "ISC",
   "keywords": [],
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "preinstall": "npx -y only-allow pnpm",
     "test": "mocha",
     "test:watch": "mocha --watch --clean-cache",
-    "start": "cross-env NODE_ENV=production node --import tsx dist/main.js",
+    "start": "node --import tsx dist/main.js",
     "pub:beta": "npm version prerelease --preid=beta",
     "pub:patch": "npm version patch",
     "type-check": "tsc --noEmit",
@@ -47,7 +46,6 @@
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
-    "mdast": "^3.0.0",
     "mocha": "^10.4.0",
     "prettier": "^3.2.5",
     "react-markdown": "^9.0.1",
@@ -66,13 +64,10 @@
     "codesandbox-import-util-types": "^2.2.3",
     "codesandbox-import-utils": "^2.2.3",
     "isomorphic-fetch": "^3.0.0",
-    "mdast-util-to-string": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "remark": "^15.0.1",
     "typescript": "^5.4.4",
     "unist-builder": "^4.0.0"
-  },
-  "peerDependencies": {
-    "remark": "^15.0.1"
   }
 }

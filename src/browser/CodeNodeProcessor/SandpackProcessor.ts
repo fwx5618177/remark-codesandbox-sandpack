@@ -18,6 +18,7 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
                         'data-mode': 'iframe',
                         'data-html': render,
                         'data-env': env,
+                        'data-type': 'sandpack',
                     },
                 };
 
@@ -29,6 +30,7 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
                         'data-codesandbox': JSON.stringify(this.sandboxMeta),
                         'data-html': render,
                         'data-env': env,
+                        'data-type': 'sandpack',
                     },
                 };
                 break;
@@ -41,6 +43,7 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
                         'data-mode': 'button',
                         'data-html': render,
                         'data-env': env,
+                        'data-type': 'sandpack',
                     },
                 };
                 break;
