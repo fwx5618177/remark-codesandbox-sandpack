@@ -36,8 +36,6 @@
     "node": ">=20.10.0"
   },
   "devDependencies": {
-    "@swc/cli": "^0.3.12",
-    "@swc/core": "^1.4.14",
     "@types/chai": "^4.3.14",
     "@types/isomorphic-fetch": "^0.0.39",
     "@types/mocha": "^10.0.6",
@@ -58,6 +56,8 @@
     "unified": "^11.0.4"
   },
   "dependencies": {
+    "@swc/cli": "^0.3.12",
+    "@swc/core": "^1.4.14",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
     "@codesandbox/sandpack-react": "^2.13.8",
