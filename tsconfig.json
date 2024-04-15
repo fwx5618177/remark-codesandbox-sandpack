@@ -7,7 +7,7 @@
         "rootDir": ".",
         "baseUrl": ".",
         "paths": {},
-        "sourceMap": true,
+        "sourceMap": false,
         "allowJs": true,
         "checkJs": true,
         "outDir": "dist",
@@ -38,7 +38,7 @@
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "declaration": true,
-        "declarationDir": "./types"
+        "declarationDir": "./dist/types"
     },
     "include": ["src/**/*", "tests/**/*"],
     "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],

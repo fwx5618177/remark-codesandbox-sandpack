@@ -2,7 +2,7 @@
   "name": "remark-codesandbox-newest",
   "version": "1.0.1-beta.2",
   "description": "Create CodeSandbox directly from code blocks",
-  "main": "src/dist/index.ts",
+  "main": "dist/index.ts",
   "author": "",
   "license": "ISC",
   "keywords": [],
