@@ -7,7 +7,15 @@
   "license": "ISC",
   "keywords": [],
   "type": "module",
+  "repository": {
+    "url": "https://github.com/fwx5618177/remark-codesandbox-newest.git"
+  },
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "postinstall": "npm run build:prod",
     "prepare": "husky install",
     "test": "mocha",
     "test:watch": "mocha --watch --clean-cache",
