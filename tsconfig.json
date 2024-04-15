@@ -38,9 +38,10 @@
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "declaration": true,
+        "noEmit": true,
         "declarationDir": "./dist/types"
     },
-    "include": ["src/**/*", "tests/**/*"],
+    "include": ["src/**/*", "tests/**/*", "types"],
     "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],
     "ts-node": {
         "esm": true

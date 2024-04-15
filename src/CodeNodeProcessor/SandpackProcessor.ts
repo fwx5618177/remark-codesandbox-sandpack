@@ -1,12 +1,10 @@
-import { RenderAdapter } from 'src/render/RenderAdapter';
-
 import { BaseCodeNodeProcessor } from './BaseCodeNodeProcessor';
 
 export class SandpackProcessor extends BaseCodeNodeProcessor {
     override process(): void {
         const { mode } = this.options;
-        const renderAdapter = new RenderAdapter();
-        const render = renderAdapter.render(this.node, this.options);
+        // const renderAdapter = new RenderAdapter();
+        // const render = renderAdapter.render(this.node, this.options);
         const env = typeof window !== 'undefined' ? 'browser' : 'node';
 
         switch (mode || 'button') {
@@ -16,7 +14,7 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
                         ...(this.node.data?.hProperties || {}),
                         'data-sandpack': JSON.stringify(this.sandboxMeta),
                         'data-mode': 'iframe',
-                        'data-html': render,
+                        // 'data-html': render,
                         'data-env': env,
                         'data-type': 'sandpack',
                     },
@@ -28,7 +26,7 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
                     hProperties: {
                         ...(this.node.data?.hProperties || {}),
                         'data-codesandbox': JSON.stringify(this.sandboxMeta),
-                        'data-html': render,
+                        // 'data-html': render,
                         'data-env': env,
                         'data-type': 'sandpack',
                     },
@@ -41,7 +39,7 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
                         ...(this.node.data?.hProperties || {}),
                         'data-sandpack': JSON.stringify(this.sandboxMeta),
                         'data-mode': 'button',
-                        'data-html': render,
+                        // 'data-html': render,
                         'data-env': env,
                         'data-type': 'sandpack',
                     },

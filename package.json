@@ -2,7 +2,7 @@
   "name": "remark-codesandbox-newest",
   "version": "1.0.1-beta.2",
   "description": "Create CodeSandbox directly from code blocks",
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
   "author": "",
   "license": "ISC",
   "keywords": [],
@@ -12,7 +12,8 @@
   },
   "types": "types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "scripts": {
     "postinstall": "npm run build:prod",
@@ -22,12 +23,10 @@
     "start": "node --import tsx dist/main.js",
     "pub:beta": "npm version prerelease --preid=beta",
     "pub:patch": "npm version patch",
-    "type-check": "tsc --noEmit",
-    "rm": "rimraf dist && rimraf types",
+    "rm": "rimraf dist",
     "build": "swc src -d dist --source-maps -D --strip-leading-paths",
-    "build:type": "tsc --emitDeclarationOnly",
-    "build:clean": "npm run rm && npm run build",
-    "build:prod": "npm run type-check && npm run build:type && npm run build",
+    "build:type": "tsc --noEmit",
+    "build:prod": "npm run rm && npm run build:type && npm run build",
     "lint": "eslint --config .eslintrc . --cache --debug",
     "lint:fix": "eslint --fix .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.{ts,js}\""

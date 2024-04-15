@@ -1,8 +1,8 @@
 declare module 'remark-codesandbox-newest' {
     import type { ComponentProps } from 'react';
     import { Sandpack } from '@codesandbox/sandpack-react';
-    import type { SandpackThemeProp } from '@codesandbox/sandpack-react';
-    import type { Node } from 'unist';
+    import { SandpackThemeProp } from '@codesandbox/sandpack-react/types';
+    import { Node } from 'unist';
 
     export type Options = {
         mode?: 'button' | 'iframe' | 'metadata';

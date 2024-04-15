@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { describe, it, before } from 'mocha';
-import { Utils } from '../src/browser/utils';
+import { Utils } from '../src/utils';
 
 describe('Utils.parseCodeBlock', () => {
     it('应该解析react代码块并识别语言', () => {
