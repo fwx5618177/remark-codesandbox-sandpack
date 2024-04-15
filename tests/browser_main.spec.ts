@@ -11,7 +11,7 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { visit } from 'unist-util-visit';
 
-import remarkSandpack from '../src/browser';
+import remarkSandpack from '../src';
 import { CodeNode } from '../src/ICodeSandBox';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

@@ -1,4 +1,4 @@
-import { CodeNode, Options, ParsedProps } from '../../ICodeSandBox';
+import { CodeNode, Options, ParsedProps } from '../ICodeSandBox';
 
 import { NodeCodeNodeProcessor } from './NodeCodeNodeProcessor';
 import { CodeSandboxProcessor } from './CodeSandboxProcessor';

@@ -1,6 +1,6 @@
 import { visit } from 'unist-util-visit';
 
-import { CodeNode, Options } from '../ICodeSandBox';
+import { CodeNode, Options } from './ICodeSandBox';
 
 import { Utils } from './utils';
 
