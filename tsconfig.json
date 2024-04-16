@@ -10,7 +10,7 @@
         "sourceMap": false,
         "allowJs": true,
         "checkJs": true,
-        "outDir": "dist",
+        "outDir": "./dist",
         "removeComments": true,
         "isolatedModules": true,
         "allowSyntheticDefaultImports": true,
@@ -38,10 +38,10 @@
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "declaration": true,
-        "noEmit": true,
+        "emitDeclarationOnly": true,
         "declarationDir": "./dist/types"
     },
-    "include": ["src/**/*", "tests/**/*", "types"],
+    "include": ["src/**/*", "tests/**/*.spec.ts", "types"],
     "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],
     "ts-node": {
         "esm": true

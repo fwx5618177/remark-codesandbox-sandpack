@@ -3,20 +3,24 @@ declare module 'remark-codesandbox-newest' {
     import { Sandpack } from '@codesandbox/sandpack-react';
     import { SandpackThemeProp } from '@codesandbox/sandpack-react/types';
     import { Node } from 'unist';
+    import { Plugin } from 'unified';
 
-    export type Options = {
+    const remarkCodesandboxNewest: Plugin<[Options?]>;
+    export = remarkCodesandboxNewest;
+
+    type Options = {
         mode?: 'button' | 'iframe' | 'metadata';
         runtime?: 'node' | 'browser';
         type?: 'sandpack' | 'raw' | 'codesandbox';
     };
 
-    export type SandpackProps = ComponentProps<typeof Sandpack>;
+    type SandpackProps = ComponentProps<typeof Sandpack>;
 
-    export type SandpackExtendProps = Omit<SandpackProps, 'theme'> & {
+    type SandpackExtendProps = Omit<SandpackProps, 'theme'> & {
         theme: SandpackThemeProp | ThemeEnum;
     };
 
-    export enum ThemeEnum {
+    enum ThemeEnum {
         Amethyst = 'amethyst',
         AquaBlue = 'aquaBlue',
         AtomDark = 'atomDark',
@@ -35,9 +39,9 @@ declare module 'remark-codesandbox-newest' {
         SandpackDark = 'sandpackDark',
     }
 
-    export type RenderOptions = SandpackExtendProps;
+    type RenderOptions = SandpackExtendProps;
 
-    export interface CodeNode extends Node {
+    interface CodeNode extends Node {
         lang: string;
         meta: string;
         value: string;
@@ -48,16 +52,16 @@ declare module 'remark-codesandbox-newest' {
         };
     }
 
-    export type CodesandboxType = 'style' | 'template' | 'action' | 'type';
-    export type ParseMetaLanguage = 'react' | 'vue' | 'angular' | 'js' | 'javascript';
-    export interface ParsedProps {
+    type CodesandboxType = 'style' | 'template' | 'action' | 'type';
+    type ParseMetaLanguage = 'react' | 'vue' | 'angular' | 'js' | 'javascript';
+    interface ParsedProps {
         // language: ParseMetaLanguage;
         codesandbox: {
             [key in CodesandboxType]: string;
         };
     }
 
-    export interface ICodeNodeProcessor {
+    interface ICodeNodeProcessor {
         node: CodeNode;
         sandboxMeta: ParsedProps['codesandbox'];
         options: Options;
@@ -65,7 +69,7 @@ declare module 'remark-codesandbox-newest' {
         process(): void;
     }
 
-    export interface IRender {
+    interface IRender {
         render(node: CodeNode, options?: RenderOptions): string;
     }
 }

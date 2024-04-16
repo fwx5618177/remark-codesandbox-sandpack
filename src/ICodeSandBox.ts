@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 import { Sandpack } from '@codesandbox/sandpack-react';
-import { SandpackThemeProp } from '@codesandbox/sandpack-react/types';
+import { SandpackThemeProp } from '@codesandbox/sandpack-react';
 import { Node } from 'unist';
 
 export type Options = {

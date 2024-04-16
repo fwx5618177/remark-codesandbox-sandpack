@@ -69,9 +69,8 @@ describe('remarkSandpack', () => {
                     if (err) throw err;
 
                     visit(processedAst as Node, 'code', (node: CodeNode) => {
-                        console.log(node);
                         if (node.data && node.data.hProperties) {
-                            const { 'data-sandpack': dataSandpack, 'data-mode': dataMode } =
+                            const { sandpack: dataSandpack, mode: dataMode } =
                                 node.data.hProperties;
 
                             expect(dataMode).to.equal('iframe');
@@ -91,9 +90,8 @@ describe('remarkSandpack', () => {
                     if (err) throw err;
 
                     visit(processedAst as Node, 'code', (node: CodeNode) => {
-                        console.log(node);
                         if (node.data && node.data.hProperties) {
-                            const { 'data-sandpack': dataSandpack, 'data-mode': dataMode } =
+                            const { sandpack: dataSandpack, mode: dataMode } =
                                 node.data.hProperties;
 
                             expect(dataMode).to.equal('iframe');

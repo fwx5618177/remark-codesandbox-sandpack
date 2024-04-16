@@ -12,13 +12,13 @@ const c = 3;
 
 加上`codesandbox=new`:
 
-```js codesandbox=new
+```react codesandbox=new
 const a = 1;
 ```
 
-加上`codesandbox=new?style=height:1000px;width:600px`:
+加上`codesandbox=new?style=height:1000px;width:600px&name=App.tsx`:
 
-```js codesandbox=new?style=height:1000px;width:600px
+```react codesandbox=new?style=height:1000px;width:600px
 const a = 1;
 ```
 
@@ -26,11 +26,11 @@ const a = 1;
 const a = 1;
 ```
 
-```javascript codesandbox=new
+```react codesandbox=new
 const a = 1;
 ```
 
-```javascript codesandbox=new?style=height:1000px;width:600px
+```react codesandbox=new?style=height:1000px;width:600px
 const a = 1;
 ```
 
@@ -44,7 +44,7 @@ const a = 1;
 const a = 1;
 ```
 
-```react codesandbox=new?style=height:1000px;width:600px&template=react&theme=night
+```react codesandbox=new?style=height:1000px;width:600px&template=react&theme=dark
 const a = 1;
 const a = 1;
 const a = 1;

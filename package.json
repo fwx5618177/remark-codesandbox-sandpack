@@ -11,10 +11,6 @@
     "url": "https://github.com/fwx5618177/remark-codesandbox-newest.git"
   },
   "types": "types/index.d.ts",
-  "files": [
-    "dist",
-    "types"
-  ],
   "scripts": {
     "postinstall": "npm run build:prod",
     "prepare": "husky install",
@@ -25,7 +21,7 @@
     "pub:patch": "npm version patch",
     "rm": "rimraf dist",
     "build": "swc src -d dist --source-maps -D --strip-leading-paths",
-    "build:type": "tsc --noEmit",
+    "build:type": "tsc --emitDeclarationOnly",
     "build:prod": "npm run rm && npm run build:type && npm run build",
     "lint": "eslint --config .eslintrc . --cache --debug",
     "lint:fix": "eslint --fix .",

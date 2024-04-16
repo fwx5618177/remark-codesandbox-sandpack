@@ -5,7 +5,6 @@
     ],
     "spec": [
         "tests/**/*.spec.ts",
-        "tests/**/*.spec.js",
         "tests/**/*.coffee",
         "src/**/*.spec.ts"
     ],
