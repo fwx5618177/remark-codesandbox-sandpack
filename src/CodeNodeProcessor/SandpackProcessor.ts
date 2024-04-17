@@ -8,9 +8,8 @@ export class SandpackProcessor extends BaseCodeNodeProcessor {
         const render = renderAdapter.render(this.node, {
             ...this.options,
             ...this.sandboxMeta,
+            template: this.node.lang,
         });
-
-        console.log('render: ', render);
 
         const env = typeof window !== 'undefined' ? 'browser' : 'node';
 
