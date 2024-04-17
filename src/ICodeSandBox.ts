@@ -47,7 +47,7 @@ export interface CodeNode extends Node {
     };
 }
 
-export type CodesandboxType = 'style' | 'template' | 'action' | 'type';
+export type CodesandboxType = 'style' | 'id' | 'action' | 'type';
 export type ParseMetaLanguage = 'react' | 'vue' | 'angular' | 'js' | 'javascript';
 export interface ParsedProps {
     // language: ParseMetaLanguage;

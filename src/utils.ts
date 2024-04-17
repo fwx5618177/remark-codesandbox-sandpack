@@ -26,7 +26,7 @@ export class Utils {
         const codesandbox: Partial<ParsedProps['codesandbox']> = {};
 
         if (codesandboxMetaType) {
-            codesandbox.template = codesandboxMetaType;
+            codesandbox.id = codesandboxMetaType;
         }
 
         codesandboxMeta.split('&').forEach(param => {
