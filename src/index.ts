@@ -1,7 +1,6 @@
 import { visit } from 'unist-util-visit';
 
 import { CodeNode, Options } from './ICodeSandBox';
-
 import { Utils } from './utils';
 
 const remarkSandpack = (options: Options) => {
@@ -11,7 +10,6 @@ const remarkSandpack = (options: Options) => {
             const sandboxMeta = meta?.codesandbox;
             if (!sandboxMeta) return;
 
-            // 执行策略实现代码的处理
             Utils.processNodeForDisplay(node, sandboxMeta, options);
         });
     };

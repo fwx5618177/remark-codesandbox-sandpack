@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { describe, it, before } from 'mocha';
+import { describe, it } from 'mocha';
 import { Utils } from '../src/utils';
 
 describe('Utils.parseCodeBlock', () => {
@@ -8,7 +8,7 @@ describe('Utils.parseCodeBlock', () => {
 
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
             },
         });
     });
@@ -17,7 +17,7 @@ describe('Utils.parseCodeBlock', () => {
         const result = Utils.parseCodeBlock('codesandbox=new');
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
             },
         });
     });
@@ -26,7 +26,7 @@ describe('Utils.parseCodeBlock', () => {
         const result = Utils.parseCodeBlock('codesandbox=new');
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
             },
         });
     });
@@ -35,7 +35,7 @@ describe('Utils.parseCodeBlock', () => {
         const result = Utils.parseCodeBlock('codesandbox=new?style=height:1000px;width:600px');
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
                 style: 'height:1000px;width:600px',
             },
         });
@@ -47,7 +47,7 @@ describe('Utils.parseCodeBlock', () => {
         );
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
                 style: 'height:1000px;width:600px',
                 action: 'edit',
             },
@@ -58,7 +58,7 @@ describe('Utils.parseCodeBlock', () => {
         const result = Utils.parseCodeBlock('codesandbox=new?style=height:100%25;width:50%25');
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
                 style: 'height:100%25;width:50%25',
             },
         });
@@ -68,7 +68,7 @@ describe('Utils.parseCodeBlock', () => {
         const result = Utils.parseCodeBlock('codesandbox=new');
         expect(result).to.deep.equal({
             codesandbox: {
-                template: 'new',
+                id: 'new',
             },
         });
     });
