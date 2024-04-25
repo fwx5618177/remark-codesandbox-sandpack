@@ -245,7 +245,7 @@ describe('Utils', () => {
             const ast = remark().parse(markdownContent);
 
             remark()
-                .use(remarkSandpack, { mode: 'iframe', runtime: 'browser', type: 'sandpack' })
+                .use(remarkSandpack, { mode: 'sandpack' })
                 .run(ast, (err, processedAst) => {
                     if (err) throw err;
 
