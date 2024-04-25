@@ -1,55 +1,66 @@
-import { CodeNode, CodesandboxType, Options, ParsedProps } from './ICodeSandBox';
+import {
+    CodeAction,
+    CodeNode,
+    CodesandboxType,
+    Options,
+    ParsedProps,
+} from 'remark-codesandbox-sandpack';
+import { getRuntimeProcessor } from './runtimeEnv';
 
-import { CodeNodeProcessorFactory } from './CodeNodeProcessor/CodeNodeProcessorFactory';
+const validKeys: CodesandboxType[] = ['style', 'theme', 'mode', 'type', 'name', 'external'];
 
-export class Utils {
-    /**
-     * 解析代码块中的codesandbox指令，提取选项
-     * @description
-     * * 代码块中的codesandbox指令格式为:
-     * * 1. ` ```[react|vue|angular] codesandbox=new`
-     * * 2. ` ```[react|vue|angular] codesandbox=new?style=height:1000px;width:600px`
-     * @param {string} meta
-     * @returns {ParsedProps | undefined} 返回匹配到的类型，如果没有匹配到返回undefined
-     */
-    static parseCodeBlock = (meta: string): ParsedProps | undefined => {
-        if (!meta) return;
+/**
+ * Parse the code block to extract the codesandbox meta
+ * @param {CodeNode} node - The code node object
+ * @returns {ParsedProps | undefined} - The parsed props if matched, otherwise undefined
+ */
+function parseCodeBlock(node: CodeNode): ParsedProps | undefined {
+    if (!node) return;
 
-        const pattern = /codesandbox=([^?\s]+)(\?.*)?$/;
-        const match = meta.match(pattern);
+    const meta = node?.meta;
+    const lang = node?.lang as ParsedProps['ParseMetaLanguage'];
+    const pattern = /codesandbox=([^?\s]+)(\?.*)?$/;
+    const match = meta?.match(pattern);
 
-        if (!match) return;
+    if (!match) return;
 
-        // const language = match[1] as ParseMetaLanguage;
-        const codesandboxMetaType = match[1];
-        const codesandboxMeta = match[2] ? match[2].substring(1) : '';
-        const codesandbox: Partial<ParsedProps['codesandbox']> = {};
+    const codesandboxMetaType = match[1];
+    const codesandboxMeta = match[2] ? match[2].substring(1) : '';
+    const codesandbox: ParsedProps['codesandbox'] = {
+        action: codesandboxMetaType as CodeAction,
+    };
 
-        if (codesandboxMetaType) {
-            codesandbox.id = codesandboxMetaType;
-        }
-
-        codesandboxMeta.split('&').forEach(param => {
-            const [key, value] = param.split('=');
-            if (key && value) {
+    codesandboxMeta.split('&').forEach(param => {
+        const [key, value] = param.split('=');
+        if (key && value) {
+            if (validKeys.includes(key as CodesandboxType)) {
                 codesandbox[key as CodesandboxType] = value;
+            } else {
+                throw new Error(`Invalid key: ${key}`);
             }
-        });
+        }
+    });
 
-        const props = {
-            codesandbox: codesandbox as Required<ParsedProps['codesandbox']>,
-        } as const satisfies ParsedProps;
-
-        return props;
+    const props: ParsedProps = {
+        codesandbox: codesandbox as Required<ParsedProps['codesandbox']>,
+        ParseMetaLanguage: lang,
     };
 
-    static processNodeForDisplay = (
-        node: CodeNode,
-        sandboxMeta: ParsedProps['codesandbox'],
-        options: Options,
-    ) => {
-        const process = CodeNodeProcessorFactory.getProcessor(node, sandboxMeta, options);
-
-        process.process();
-    };
+    return props;
 }
+
+/**
+ * Process the node for display
+ * @param {CodeNode} node - Node Object
+ * @param {ParsedProps['codesandbox']} sandboxMeta - Codesandbox Meta
+ * @param {Options} options - 配置选项
+ */
+function processNodeForDisplay(
+    node: CodeNode,
+    sandboxMeta: ParsedProps['codesandbox'],
+    options: Options,
+) {
+    getRuntimeProcessor(node, sandboxMeta, options);
+}
+
+export { parseCodeBlock, processNodeForDisplay, validKeys };

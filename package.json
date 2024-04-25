@@ -1,5 +1,5 @@
 {
-  "name": "remark-codesandbox-newest",
+  "name": "remark-codesandbox-sandpack",
   "version": "1.0.1-beta.2",
   "description": "Create CodeSandbox directly from code blocks",
   "main": "dist/index.js",
@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@types/chai": "^4.3.14",
-    "@types/isomorphic-fetch": "^0.0.39",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.7",
     "@types/unist": "^3.0.2",
@@ -47,29 +46,24 @@
     "lint-staged": "^15.2.2",
     "mocha": "^10.4.0",
     "prettier": "^3.2.5",
-    "rimraf": "^5.0.5",
-    "unified": "^11.0.4"
+    "rimraf": "^5.0.5"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.13.8",
+    "@codesandbox/sandpack-themes": "^2.0.21",
     "@swc/cli": "^0.3.12",
     "@swc/core": "^1.4.14",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
-    "@codesandbox/sandpack-react": "^2.13.8",
-    "@codesandbox/sandpack-themes": "^2.0.21",
-    "codesandbox": "^2.2.3",
-    "codesandbox-import-util-types": "^2.2.3",
-    "codesandbox-import-utils": "^2.2.3",
-    "isomorphic-fetch": "^3.0.0",
+    "hast-util-to-html": "^9.0.1",
+    "hastscript": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remark": "^15.0.1",
-    "typescript": "^5.4.5",
-    "unist-builder": "^4.0.0",
-    "unist-util-is": "^6.0.0",
-    "tsx": "^4.7.2",
-    "unist-util-visit": "^5.0.0",
     "react-markdown": "^9.0.1",
-    "remark-parse": "^11.0.0"
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5",
+    "unist-util-visit": "^5.0.0"
   }
 }

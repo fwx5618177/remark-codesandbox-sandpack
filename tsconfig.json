@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "jsx": "react-jsx",
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "node",
@@ -16,7 +15,7 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true,
+        "strict": false,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
@@ -39,10 +38,10 @@
         "skipLibCheck": true,
         "declaration": true,
         "emitDeclarationOnly": true,
-        "declarationDir": "./dist/types"
+        "declarationDir": "./dist"
     },
     "include": ["src/**/*", "tests/**/*.spec.ts", "types"],
-    "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],
+    "exclude": ["node_modules", "dist", "**/dist"],
     "ts-node": {
         "esm": true
     }

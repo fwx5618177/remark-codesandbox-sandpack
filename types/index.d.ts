@@ -1,75 +1,34 @@
-declare module 'remark-codesandbox-newest' {
-    import type { ComponentProps } from 'react';
-    import { Sandpack } from '@codesandbox/sandpack-react';
-    import { SandpackThemeProp } from '@codesandbox/sandpack-react/types';
+declare module 'remark-codesandbox-sandpack' {
     import { Node } from 'unist';
-    import { Plugin } from 'unified';
+    import { SandpackPredefinedTemplate } from '@codesandbox/sandpack-react';
 
-    const remarkCodesandboxNewest: Plugin<[Options?]>;
-    export = remarkCodesandboxNewest;
+    type Runtime = 'node' | 'browser';
 
     type Options = {
-        mode?: 'button' | 'iframe' | 'metadata';
-        runtime?: 'node' | 'browser';
-        type?: 'sandpack' | 'raw' | 'codesandbox';
+        mode?: 'button' | 'metadata' | 'skip' | 'sandpack';
     };
 
-    type SandpackProps = ComponentProps<typeof Sandpack>;
-
-    type SandpackExtendProps = Omit<SandpackProps, 'theme'> & {
-        theme: SandpackThemeProp | ThemeEnum;
-    };
-
-    enum ThemeEnum {
-        Amethyst = 'amethyst',
-        AquaBlue = 'aquaBlue',
-        AtomDark = 'atomDark',
-        Cobalt2 = 'cobalt2',
-        Cyberpunk = 'cyberpunk',
-        Dracula = 'dracula',
-        EcoLight = 'ecoLight',
-        FreeCodeCampDark = 'freeCodeCampDark',
-        GithubLight = 'githubLight',
-        GruvboxDark = 'gruvboxDark',
-        GruvboxLight = 'gruvboxLight',
-        LevelUp = 'levelUp',
-        MonokaiPro = 'monokaiPro',
-        NeoCyan = 'neoCyan',
-        NightOwl = 'nightOwl',
-        SandpackDark = 'sandpackDark',
-    }
-
-    type RenderOptions = SandpackExtendProps;
+    type Properties = keyof Options | 'env' | 'type' | 'html';
 
     interface CodeNode extends Node {
         lang: string;
         meta: string;
         value: string;
-        data?: {
-            hProperties?: {
-                [key: string]: any; // 声明 hProperties 以存储 HTML 属性
+        data: {
+            hProperties: {
+                [key in Properties]?: string;
             };
         };
     }
 
-    type CodesandboxType = 'style' | 'template' | 'action' | 'type';
-    type ParseMetaLanguage = 'react' | 'vue' | 'angular' | 'js' | 'javascript';
+    type CodeAction = 'new';
+    type CodeType = 'html' | 'external';
+    type CodesandboxType = 'style' | 'theme' | 'mode' | 'type' | 'name' | 'external';
+
     interface ParsedProps {
-        // language: ParseMetaLanguage;
+        ParseMetaLanguage: SandpackPredefinedTemplate;
         codesandbox: {
-            [key in CodesandboxType]: string;
-        };
-    }
-
-    interface ICodeNodeProcessor {
-        node: CodeNode;
-        sandboxMeta: ParsedProps['codesandbox'];
-        options: Options;
-
-        process(): void;
-    }
-
-    interface IRender {
-        render(node: CodeNode, options?: RenderOptions): string;
+            action: CodeAction;
+        } & Partial<Record<CodesandboxType, string>>;
     }
 }
