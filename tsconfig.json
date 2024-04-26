@@ -5,16 +5,16 @@
         "module": "ESNext",
         "target": "ESNext",
         "moduleResolution": "node",
-        "rootDir": ".",
-        "baseUrl": ".",
+        "rootDir": "./src",
+        "baseUrl": "./src",
         "outDir": "./dist",
         "declaration": true,
         "emitDeclarationOnly": true,
         "declarationDir": "./dist",
         "allowSyntheticDefaultImports": true
     },
-    "include": ["src/**/*", "tests/**/*.spec.ts", "types"],
-    "exclude": ["node_modules", "dist", "**/dist"],
+    "include": ["src/**/*", "**/*.spec.ts", "types"],
+    "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],
     "ts-node": {
         "esm": true
     }

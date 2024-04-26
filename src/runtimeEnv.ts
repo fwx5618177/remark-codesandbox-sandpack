@@ -1,6 +1,5 @@
-import { CodeNode, Options, ParsedProps, Runtime } from 'remark-codesandbox-sandpack';
-
 import { getSandpack } from './browser';
+import { CodeNode, Options, ParsedProps, Runtime } from './type';
 
 const runtimeEnv: Runtime = typeof window !== 'undefined' ? 'browser' : 'node';
 

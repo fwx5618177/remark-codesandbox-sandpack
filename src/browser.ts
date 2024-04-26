@@ -1,7 +1,6 @@
-import { CodeNode, ParsedProps } from 'remark-codesandbox-sandpack';
-
 import { getRuntimeEnv } from './runtimeEnv';
 import { sandpack2Template } from './htmlTemplate';
+import { CodeNode, ParsedProps } from './type';
 
 export function getSandpack(node: CodeNode, sandboxMeta: ParsedProps['codesandbox']) {
     const { theme, mode, type, name } = sandboxMeta;

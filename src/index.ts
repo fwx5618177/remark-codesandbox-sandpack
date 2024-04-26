@@ -1,8 +1,8 @@
 import { visit } from 'unist-util-visit';
 import { Options } from 'remark-parse';
-import { CodeNode } from 'remark-codesandbox-sandpack';
 
 import { parseCodeBlock, processNodeForDisplay } from './utils';
+import { CodeNode } from './type';
 
 const remarkSandpack = (options: Options) => {
     return (tree: CodeNode) => {

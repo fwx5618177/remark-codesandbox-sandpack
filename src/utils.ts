@@ -1,12 +1,7 @@
-import {
-    CodeAction,
-    CodeNode,
-    CodesandboxType,
-    Options,
-    ParsedProps,
-} from 'remark-codesandbox-sandpack';
+import { Options } from 'remark-parse';
 
 import { getRuntimeProcessor } from './runtimeEnv';
+import { CodesandboxType, CodeNode, ParsedProps, CodeAction } from './type';
 
 const validKeys: CodesandboxType[] = ['style', 'theme', 'mode', 'type', 'name', 'external'];
 

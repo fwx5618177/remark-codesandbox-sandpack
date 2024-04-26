@@ -9,7 +9,7 @@ import { remark } from 'remark';
 import { fileURLToPath } from 'url';
 import remarkSandpack from '../src';
 import { visit } from 'unist-util-visit';
-import { CodeNode } from 'remark-codesandbox-sandpack';
+import { CodeNode } from '../src/type';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
