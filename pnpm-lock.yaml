@@ -14,18 +14,6 @@ importers:
       '@codesandbox/sandpack-themes':
         specifier: ^2.0.21
         version: 2.0.21
-      '@swc/cli':
-        specifier: ^0.3.12
-        version: 0.3.12(@swc/core@1.5.0)(chokidar@3.5.3)
-      '@swc/core':
-        specifier: ^1.4.14
-        version: 1.5.0
-      '@types/react':
-        specifier: ^18.2.78
-        version: 18.2.79
-      '@types/react-dom':
-        specifier: ^18.2.25
-        version: 18.2.25
       hast-util-to-html:
         specifier: ^9.0.1
         version: 9.0.1
@@ -47,16 +35,16 @@ importers:
       remark-parse:
         specifier: ^11.0.0
         version: 11.0.0
-      tsx:
-        specifier: ^4.7.2
-        version: 4.7.2
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
+      '@swc/cli':
+        specifier: ^0.3.12
+        version: 0.3.12(@swc/core@1.5.0)(chokidar@3.5.3)
+      '@swc/core':
+        specifier: ^1.4.14
+        version: 1.5.0
       '@types/chai':
         specifier: ^4.3.14
         version: 4.3.14
@@ -66,6 +54,12 @@ importers:
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
+      '@types/react':
+        specifier: ^18.2.78
+        version: 18.2.79
+      '@types/react-dom':
+        specifier: ^18.2.25
+        version: 18.2.25
       '@types/unist':
         specifier: ^3.0.2
         version: 3.0.2
@@ -105,6 +99,12 @@ importers:
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
+      tsx:
+        specifier: ^4.7.2
+        version: 4.7.2
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
 packages:
 
