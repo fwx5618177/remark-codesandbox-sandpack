@@ -34,13 +34,8 @@ jobs:
                   git config --local user.email "fengwenxuan2006@126.com"
                   git config --local user.name "wenxuan"
 
-            - name: Update version and commit
+            - name: Publish to npm
               run: |
-                  NEW_VERSION=$(pnpm run pub:beta | grep -oP '(?<=\+).*(?=\s)')
-                  git add package.json
-                  git commit -m "chore: bump version to $NEW_VERSION"
-                  git push
-                  echo "Publishing a Beta Release"
                   pnpm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
