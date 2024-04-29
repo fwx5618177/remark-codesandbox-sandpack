@@ -36,14 +36,7 @@ jobs:
 
             - name: Determine version type and publish
               run: |
-                  if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-                    pnpm run pub:patch
-                    echo "Publishing a Patch Release"
-                    pnpm publish --access public
-                  elif [[ $GITHUB_REF == 'refs/heads/master' ]]; then
-                    pnpm run pub:beta
-                    echo "Publishing a Beta Release"
-                    pnpm publish --tag beta --access public
-                  fi
+                  echo "Publishing a Patch Release"
+                  pnpm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
