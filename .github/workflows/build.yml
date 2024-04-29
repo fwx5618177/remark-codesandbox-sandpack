@@ -13,9 +13,6 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [20.11.0]
 
         steps:
             - uses: actions/checkout@v2
