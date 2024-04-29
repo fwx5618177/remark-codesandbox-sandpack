@@ -5,15 +5,21 @@
         "module": "ESNext",
         "target": "ESNext",
         "moduleResolution": "node",
-        "rootDir": "./src",
         "baseUrl": "./src",
+        "rootDir": "./src",
         "outDir": "./dist",
         "declaration": true,
-        "emitDeclarationOnly": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
         "declarationDir": "./dist",
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noEmitOnError": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true
     },
-    "include": ["src/**/*", "**/*.spec.ts", "types"],
+    "include": ["./src"],
     "exclude": ["node_modules", "dist", "**/dist", "**/*.spec.ts"],
     "ts-node": {
         "esm": true

@@ -1,5 +1,5 @@
 import { visit } from 'unist-util-visit';
-import { Options } from 'remark-parse';
+import type { Options } from 'remark-parse';
 
 import { parseCodeBlock, processNodeForDisplay } from './utils';
 import { CodeNode } from './type';

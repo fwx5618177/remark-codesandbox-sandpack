@@ -40,6 +40,4 @@ export function getSandpack(node: CodeNode, sandboxMeta: ParsedProps['codesandbo
             html,
         },
     };
-
-    console.log(html);
 }

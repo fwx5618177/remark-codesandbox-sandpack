@@ -3,29 +3,30 @@
   "version": "1.0.1-beta.2",
   "description": "Create CodeSandbox directly from code blocks",
   "main": "dist/index.js",
-  "author": "",
-  "license": "ISC",
-  "keywords": [],
   "type": "module",
-  "repository": {
-    "url": "https://github.com/fwx5618177/remark-codesandbox-newest.git"
-  },
   "types": "dist/index.d.ts",
+  "author": "fwx5618177",
+  "license": "ISC",
+  "keywords": [
+    "remark",
+    "codesandbox",
+    "sandpack"
+  ],
+  "repository": {
+    "url": "https://github.com/fwx5618177/remark-codesandbox-sandpack.git"
+  },
   "scripts": {
-    "postinstall": "npm run build:prod",
     "prepare": "husky install",
     "test": "mocha",
     "test:watch": "mocha --watch --clean-cache",
-    "start": "node --import tsx dist/main.js",
     "pub:beta": "npm version prerelease --preid=beta",
     "pub:patch": "npm version patch",
-    "rm": "rimraf dist",
-    "build": "swc src -d dist --source-maps -D --strip-leading-paths",
-    "build:type": "tsc --emitDeclarationOnly",
-    "build:prod": "npm run rm && npm run build:type && npm run build",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "prepublish": "npm run build",
     "lint": "eslint --config .eslintrc . --cache --debug",
     "lint:fix": "eslint --fix .",
-    "prettier": "prettier --ignore-path .gitignore --write \"**/*.{ts,js}\""
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.{ts,js,md,json}\""
   },
   "engines": {
     "node": ">=20.10.0"
@@ -47,8 +48,6 @@
     "mocha": "^10.4.0",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "@swc/cli": "^0.3.12",
-    "@swc/core": "^1.4.14",
     "typescript": "^5.4.5",
     "tsx": "^4.7.2",
     "@types/react": "^18.2.78",
