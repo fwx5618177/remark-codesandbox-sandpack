@@ -29,6 +29,11 @@ jobs:
             - name: Prepare build
               run: pnpm run prepublish
 
+            - name: Configure Git identity
+              run: |
+                  git config --local user.email "fengwenxuan2006@126.com"
+                  git config --local user.name "wenxuan"
+
             - name: Determine version type and publish
               run: |
                   if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
