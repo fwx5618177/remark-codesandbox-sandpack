@@ -1,0 +1,8 @@
+release.config.js
+package-lock.json
+package.json
+
+dist/
+node_modules/
+.vscode/
+
