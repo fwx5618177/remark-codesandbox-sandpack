@@ -1,23 +1,25 @@
 {
   "name": "remark-codesandbox-sandpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create CodeSandbox directly from code blocks",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/index.d.ts",
   "author": "fwx5618177",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "remark",
     "codesandbox",
     "sandpack"
   ],
-  "release": {
-    "repositoryUrl": "https://www.npmjs.com/package/remark-codesandbox-sandpack"
-  },
   "repository": {
+    "type": "git",
     "url": "https://github.com/fwx5618177/remark-codesandbox-sandpack.git"
   },
+  "bugs": {
+    "url": "https://github.com/fwx5618177/remark-codesandbox-sandpack/issues"
+  },
+  "homepage": "https://github.com/fwx5618177/remark-codesandbox-sandpack#readme",
   "scripts": {
     "prepare": "husky install",
     "test": "mocha",

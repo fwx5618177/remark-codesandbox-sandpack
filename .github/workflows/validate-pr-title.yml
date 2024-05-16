@@ -1,70 +1,46 @@
-name: 'Validate PR title'
+name: Validate PR title
 
 on:
-  pull_request_target:
-    types:
-      - opened
-      - edited
-      - synchronize
+    pull_request_target:
+        types:
+            - opened
+            - edited
+            - synchronize
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
-  main:
-    name: Validate PR title
-    runs-on: ubuntu-latest
-    if: github.actor!= 'dependabot'
-    steps:
-      # Please look up the latest version from
-      # https://github.com/amannn/action-semantic-pull-request/releases
-      - uses: amannn/action-semantic-pull-request@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          # Configure which types are allowed.
-          # Default: https://github.com/commitizen/conventional-commit-types
-          types: |
-            fix
-            feat
-            docs
-            ci
-            chore
-            build
-            style
-            refactor
-            perf
-            test
-            revert
-          # Configure that a scope must always be provided.
-          requireScope: false
-          # Configure additional validation for the subject based on a regex.
-          # This example ensures the subject starts with a lowercase character.
-          subjectPattern: ^[a-zA-Z0-9].+$
-          # If `subjectPattern` is configured, you can use this property to override
-          # the default error message that is shown when the pattern doesn't match.
-          # The variables `subject` and `title` can be used within the message.
-          subjectPatternError: |
-            The subject "{subject}" found in the pull request title "{title}"
-            didn't match the configured pattern. Please ensure that the subject
-            doesn't start with an uppercase character.
-          # If the PR contains one of these newline-delimited labels, the
-          # validation is skipped. If you want to rerun the validation when
-          # labels change, you might want to use the `labeled` and `unlabeled`
-          # event triggers in your workflow.
-          ignoreLabels: |
-            bot
-            ignore-semantic-pull-request
-          # For work-in-progress PRs you can typically use draft pull requests
-          # from Github. However, private repositories on the free plan don't have
-          # this option and therefore this action allows you to opt-in to using the
-          # special "[WIP]" prefix to indicate this state. This will avoid the
-          # validation of the PR title and the pull request checks remain pending.
-          # Note that a second check will be reported if this is enabled.
-          wip: true
-          # When using "Squash and merge" on a PR with only one commit, GitHub
-          # will suggest using that commit message instead of the PR title for the
-          # merge commit, and it's easy to commit this by mistake. Enable this option
-          # to also validate the commit message for one commit PRs.
-          validateSingleCommit: false
+    main:
+        name: Validate PR title
+        runs-on: ubuntu-latest
+        if: github.actor != 'dependabot'
+        steps:
+            - uses: amannn/action-semantic-pull-request@main
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  types: |
+                      fix
+                      feat
+                      docs
+                      ci
+                      chore
+                      build
+                      style
+                      refactor
+                      perf
+                      test
+                      revert
+                  requireScope: false
+                  subjectPattern: ^[a-zA-Z0-9].+$
+                  subjectPatternError: |
+                      The subject "{subject}" found in the pull request title "{title}"
+                      didn't match the configured pattern. Please ensure that the subject
+                      doesn't start with an uppercase character.
+                  ignoreLabels: |
+                      bot
+                      ignore-semantic-pull-request
+                  wip: true
+                  validateSingleCommit: false
