@@ -11,7 +11,14 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
+            - name: Check if PR title already contains template
+              id: check_pr_title
+              run: |
+                  echo "title=$(gh pr view ${{ github.event.number }} --json title --jq .title)" >> $GITHUB_ENV
+                  echo "body=$(gh pr view ${{ github.event.number }} --json body --jq .body)" >> $GITHUB_ENV
+
             - name: Fill PR Template
+              if: env.title == '' || env.body == ''
               uses: repo-sync/pull-request@v2
               with:
                   github_token: ${{ secrets.CODESANDBOX_GITHUB_TOKEN }}
