@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.4.0...v1.5.0) (2024-05-16)
+
+
+### Features
+
+* add new ([0f8f817](https://github.com/fwx5618177/remark-codesandbox-sandpack/commit/0f8f817b4e9cf13ea13d2049f8b83eb251a9a8e2))
+
 # [1.4.0](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.3.0...v1.4.0) (2024-05-16)
 
 
