@@ -1,4 +1,4 @@
-import { Options } from 'remark-parse';
+import type { Options } from 'remark-parse';
 
 import { getRuntimeProcessor } from './runtimeEnv';
 import { CodesandboxType, CodeNode, ParsedProps, CodeAction } from './type';

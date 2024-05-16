@@ -4,9 +4,8 @@
         "chai"
     ],
     "spec": [
-        "tests/**/*.spec.ts",
-        "tests/**/*.coffee",
-        "src/**/*.spec.ts"
+        "**/*.spec.ts",
+        "**/*.test.ts"
     ],
     "watch": false,
     "package": "./package.json",

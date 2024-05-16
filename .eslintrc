@@ -41,7 +41,7 @@
             },
         ],
     },
-    "ignorePatterns": ["node_modules/", "dist/", "build/", "**/*.spec.ts"],
+    "ignorePatterns": ["node_modules/", "dist/", "build/", "**/*.spec.ts", "**/*.test.ts"],
     "overrides": [
         {
             "files": ["*.ts", "*.js"],
