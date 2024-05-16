@@ -14,6 +14,6 @@ jobs:
             - name: Fill PR Template
               uses: repo-sync/pull-request@v2
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  github_token: ${{ secrets.CODESANDBOX_GITHUB_TOKEN }}
                   pr_title: 'Auto-filled PR Template'
                   pr_template: '.github/pull_request_template.md'
