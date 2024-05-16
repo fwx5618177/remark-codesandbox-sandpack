@@ -1,6 +1,7 @@
 lib/
 node_modules/
 .idea/
+docs/
+
 CHANGELOG.md
-docs
 README.md
