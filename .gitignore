@@ -5,6 +5,8 @@ logs/
 download/
 
 __decrepted__*/
+coverage/
+.nyc_output/
 
 .Data_Store
 .env

@@ -34,6 +34,11 @@ jobs:
             - name: Run tests
               run: pnpm test
 
+            - name: Submit coverage to Coveralls
+              run: pnpm run coveralls
+              env:
+                  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
             - name: Prepare build
               run: pnpm run build
 
