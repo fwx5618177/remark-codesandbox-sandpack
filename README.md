@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/remark-codesandbox-sandpack.svg)](https://www.npmjs.com/package/remark-codesandbox-sandpack)
 [![npm downloads](https://img.shields.io/npm/dm/remark-codesandbox-sandpack.svg)](https://www.npmjs.com/package/remark-codesandbox-sandpack)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/fwx5618177/remark-codesandbox-sandpack/main.yml?branch=master)](https://github.com/fwx5618177/remark-codesandbox-sandpack/actions)
-[![Coverage Status](https://coveralls.io/repos/github/fwx5618177/remark-codesandbox-sandpack/badge.svg?branch=master)](https://coveralls.io/github/fwx5618177/remark-codesandbox-sandpack?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/fwx5618177/remark-codesandbox-sandpack/badge.svg?branch=master)](https://coveralls.io/github/fwx5618177/remark-codesandbox-sandpack?branch=master)
 
 Remark-CodeSandbox is a dynamic tool still under development, designed to run code snippets embedded in Markdown files directly in CodeSandbox. This tool leverages `react-sandpack` to provide a seamless experience in both node and browser environments.
 
