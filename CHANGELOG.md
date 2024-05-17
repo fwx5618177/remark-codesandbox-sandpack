@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.8.2...v1.9.0) (2024-05-17)
+
+
+### Bug Fixes
+
+* update coveralls ([b09c4a6](https://github.com/fwx5618177/remark-codesandbox-sandpack/commit/b09c4a65e5cdf3bb7ce292a1446cfc3ac32e2148))
+* update coveralls ([5256b01](https://github.com/fwx5618177/remark-codesandbox-sandpack/commit/5256b018fe4adda2c84530e12b051619772d4d56))
+
+
+### Features
+
+* add ci process ([45de61f](https://github.com/fwx5618177/remark-codesandbox-sandpack/commit/45de61f24720d0ed4dbf887dce3c5b054b4a1fa4))
+
 ## [1.8.2](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.8.1...v1.8.2) (2024-05-17)
 
 
