@@ -1,3 +1,17 @@
+## [1.8.1](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.8.0...v1.8.1) (2024-05-17)
+
+
+### Bug Fixes
+
+* update coveralls ([0911b34](https://github.com/fwx5618177/remark-codesandbox-sandpack/commit/0911b348358cc154a7be7c749132b6a4cbbad630))
+
+# [1.8.0](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.7.0...v1.8.0) (2024-05-16)
+
+
+### Features
+
+* add new ([46b507f](https://github.com/fwx5618177/remark-codesandbox-sandpack/commit/46b507f6960540e5d9853ae2c1a7a67c5e0e8c61))
+
 # [1.7.0](https://github.com/fwx5618177/remark-codesandbox-sandpack/compare/v1.6.0...v1.7.0) (2024-05-16)
 
 
