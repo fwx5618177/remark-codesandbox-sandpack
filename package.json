@@ -23,7 +23,7 @@
   "scripts": {
     "prepare": "husky install",
     "test": "c8 mocha",
-    "test:coveralls": "c8 report --reporter=text-lcov | coveralls",
+    "coveralls": "c8 report --reporter=text-lcov | coveralls",
     "test:watch": "mocha --watch --clean-cache",
     "pub:beta": "npm version prerelease --preid=beta",
     "pub:patch": "npm version patch",
